@@ -1,3 +1,18 @@
+Team Members: name - student ID - github profile
+
+James Dee - 40028332- jcdee01
+Kexuan Song  -40119435  - kexuansong
+Kelvin Chow - 40029677 - Wan Production
+
+Main Project Objective: Create a Slack-like website for messaging
+Language & Framework: Javascript and React
+
+Core Features to be added: 
+Creating Channles
+Joining Channels
+Sending messages in channels
+
+
 # `angular-seed` — the seed for AngularJS apps
 
 This project is an application skeleton for a typical [AngularJS][angularjs] web app. You can use it
