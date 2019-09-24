@@ -7,7 +7,7 @@
 
 [Evaluation process for Sprint #1](https://docs.google.com/spreadsheets/d/1m2oJq7PKvzP8OgAam0FjtFtn3SmHSC2WBE3eOfvRmUw/edit?usp=sharing)
 
-### Main Project Objective: _Create slack-like web application with core features assigned by the customer. These features include but are not limited to, creating channels, joining channels and sending messages in channels._
+### Main Project Objective: _Create slack-like web application with core features assigned by the customer. These features include but are not limited to, creating channels, joining channels and sending messages in channels_
 
 ### Language & Framework: _Javascript and React_
 
