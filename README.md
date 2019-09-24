@@ -15,4 +15,4 @@
 - Sending messages in channels
 
 React is a JavaScript library for building user interfaces.
-Techniques to be implemented are TBD.
+Technique to be implemented is Agile.
