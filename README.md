@@ -1,7 +1,7 @@
 ### Team Members
 
 - James Dee - 40028332- jcdee01
-- Kexuan Song  -40119435  - kexuansong
+- Kexuan Song  - 40119435  - kexuansong
 - Kelvin Chow - 40029677 - Wan Production
 - Ali Abass - 40024647 - v2thegreat
 
@@ -12,9 +12,9 @@
 ### Language & Framework: _Javascript and React_
 
 ### Core Features to be added: 
-- Creating Channels
-- Joining Channels
-- Sending messages in channels
+Creating Channels
+Joining Channels
+Sending messages in channels
 
 React is a JavaScript library for building user interfaces.
 Technique to be implemented is Agile.
