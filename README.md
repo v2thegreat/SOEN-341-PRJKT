@@ -5,12 +5,12 @@
 - Kelvin Chow - 40029677 - Wan Production
 - Ali Abass - 40024647 - v2thegreat
 
-### Main Project Objective: _Create a Slack-like website for messaging_
+### Main Project Objective: _Create a web application that will allow for messaging. Users will be able to _
 
 ### Language & Framework: _Javascript and React_
 
 ### Core Features to be added: 
-- Creating Channles
+- Creating Channels
 - Joining Channels
 - Sending messages in channels
 
