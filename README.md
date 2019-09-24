@@ -10,13 +10,21 @@
 ### Main Project Objective: 
 _Create slack-like web application with core features assigned by the customer. These features include but are not limited to, creating channels, joining channels and sending messages in channels_
 
-### Language & Framework: 
+### Language, Framework & techniques: 
 _Javascript and React_
+
+Technique to be implemented is Agile.
+Techniques TBD
 
 ### Core Features to be added: 
 - Creating Channels
 - Joining Channels
 - Sending messages in channels
 
+### Additional Features that may be added: 
+- Individual's profile creation/description
+- Sending messages to individual
+- tagging individuals and pinning messages in channels
+
 React is a JavaScript library for building user interfaces.
-Technique to be implemented is Agile.
+
