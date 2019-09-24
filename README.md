@@ -17,7 +17,6 @@ _Create slack-like web application with core features assigned by the customer. 
 _Javascript and React_
 
 Technique to be implemented is Agile.
-Techniques TBD
 
 ### Core Features to be added: 
 - Creating Channels
