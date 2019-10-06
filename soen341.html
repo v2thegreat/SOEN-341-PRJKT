@@ -16,23 +16,25 @@
 <a href="#">Add Friend +</a>
 </div>
 
-<!-- <div class="sidebar">
+<div class="sidebar">
   <a href="#channel"><i class="channel"></i> channel 1</a>
   <a href="#channel"><i class="channel"></i> channel 2</a>
   <a href="#channel"><i class="channel"></i> channel 3</a>
   <a href="#channel"><i class="channel"></i> Add Channel +</a>
-</div> -->
+</div>
 
+<div class="main">
 <p class="title">Neos 341</p>
-
-<span style="font-size:25px;cursor:pointer;text-align: right;" onclick="openNav()">&#9776; Friends</span>
-
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Friends</span>
+</div>
 <!-- <script src="soen341script.js"></script> -->
+
 <script>
 function openNav() {
   document.getElementById("friendSideNav").style.width = "250px";
 }
 
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
 function closeNav() {
   document.getElementById("friendSideNav").style.width = "0";
 }

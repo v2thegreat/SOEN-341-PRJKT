@@ -4,8 +4,8 @@ body {
 }
 
 p.title {
+	position: static;
 	font-family: 'EB Garamond';font-size: 50px;
-	text-align: center;
 }
 
 p.text {
@@ -16,10 +16,10 @@ p.text {
 .sidenav {
   height: 100%;
   width: 0;
-  position: right;
-  z-index: 0;
+  position: fixed;
+  z-index: 1;
   top: 0;
-  left: 0;
+  right: 0;
   background-color: #111;
   overflow-x: hidden;
   transition: 0.5s;
@@ -32,7 +32,7 @@ p.text {
   font-size: 25px;
   color: #818181;
   display: block;
-  transition: 0.3s;
+  transition: 0.5s;
 }
 
 .sidenav a:hover {
@@ -48,10 +48,9 @@ p.text {
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 10px;}
+  .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
-
 
 .sidebar {
   height: 100%;
@@ -85,4 +84,9 @@ p.text {
 @media screen and (max-height: 450px) {
   .sidebar {padding-top: 15px;}
   .sidebar a {font-size: 18px;}
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  padding: 0px 10px;
 }
