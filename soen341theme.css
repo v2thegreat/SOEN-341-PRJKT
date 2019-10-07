@@ -1,9 +1,10 @@
 body {
+  height:100%;
 	background-color: #073642;
 	color:#93a1a1;
 }
 
-p.title {
+/*p.title {
 	position: static;
 	font-family: 'EB Garamond';font-size: 50px;
 }
@@ -11,7 +12,15 @@ p.title {
 p.text {
 	font-family: 'EB Garamond';font-size: 10px;
 	text-align: center;
-}
+
+}*/
+
+
+.wrap {display: flex; justify-content: space-between;}
+.left {width: 200px; height: 600px; background: coral;}
+.right {width: 300px; height: 600px; background: grey; position: relative; }
+.middle {background: #555; height: 600px; width: 800px; margin: 0;}
+/*height:100% not working*/
 
 .sidenav {
   height: 100%;
@@ -54,7 +63,7 @@ p.text {
 
 .sidebar {
   height: 100%;
-  width: 160px;
+  width: 210px;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -76,17 +85,64 @@ p.text {
   color: #f1f1f1;
 }
 
-.main {
-  margin-left: 160px; /* Same as the width of the sidenav */
+/*.main {
+  margin-left: 160px;  Same as the width of the sidenav 
   padding: 0px 10px;
 }
+*/
 
-@media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
+input[type=text] {
+  width: 55%;
+  padding: 9px 11px;
+  position:fixed;
+  top:550px;
+  left:230px;
+  right:200px;
+  box-sizing: border-box;
+  border-radius: 5px;
 }
 
-.main {
-  margin-left: 160px; /* Same as the width of the sidenav */
-  padding: 0px 10px;
+
+.profilebtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
 }
+
+/* The container <div> - needed to position the dropdown content */
+.profile {
+  position: absolute;
+  display: inline-block;
+  float: right;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.profile-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 4;
+}
+
+/* Links inside the dropdown */
+.profile-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.profile-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.profile:hover .profile-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.profile:hover .profilebtn {background-color: #3e8e41;}
+
+

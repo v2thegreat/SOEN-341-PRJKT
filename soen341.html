@@ -1,20 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html margin:0;padding:0;height:100%;>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="soen341theme.css">
 </head>
-<body>
+
+<body height: 100%;>
+
+
+<div class="wrap">
+    <div class="left"></div>
+    <div class="middle"></div>
+    <div class="right"></div>
+</div>
+
 
 <div id="friendSideNav" class="sidenav">
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 <a href="#">Friend 1</a>
 <a href="#">Friend 2</a>
 <a href="#">Friend 3</a>
-<!-- ADD FRIEND FUNCTIONALITY -->
+<!--  ADD FRIEND FUNCTIONALITY  -->
 <a href="#">Add Friend +</a>
-</div>
+</div> 
 
 <div class="sidebar">
   <a href="#channel"><i class="channel"></i> channel 1</a>
@@ -22,11 +31,11 @@
   <a href="#channel"><i class="channel"></i> channel 3</a>
   <a href="#channel"><i class="channel"></i> Add Channel +</a>
 </div>
-
-<div class="main">
+ 
+<!-- div class="main">
 <p class="title">Neos 341</p>
 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Friends</span>
-</div>
+</div> -->
 <!-- <script src="soen341script.js"></script> -->
 
 <script>
@@ -39,5 +48,20 @@ function closeNav() {
   document.getElementById("friendSideNav").style.width = "0";
 }
 </script>
+
+<form>
+  <input type="text" id="message" name="message">
+</form>
+
+<div class="profile">
+  <button class="profilebtn">profile</button>
+  <div class="profile-content">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </div>
+</div>
+
+
 </body>
 </html>
