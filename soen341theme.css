@@ -1,79 +1,65 @@
 body {
-  height:100%;
-	background-color: #073642;
-	color:#93a1a1;
+  background-color: #202020; 
+  color:#111;
 }
 
-/*p.title {
-	position: static;
-	font-family: 'EB Garamond';font-size: 50px;
+.title {
+  position: static;
+  font-family: 'EB Garamond';
+  font-size: 50px;
+  margin-left: 400px;
+  color:#C0C0C0;
 }
 
-p.text {
-	font-family: 'EB Garamond';font-size: 10px;
-	text-align: center;
-
-}*/
-
-
-.wrap {display: flex; justify-content: space-between;}
-.left {width: 200px; height: 600px; background: coral;}
-.right {width: 300px; height: 600px; background: grey; position: relative; }
-.middle {background: #555; height: 600px; width: 800px; margin: 0;}
-/*height:100% not working*/
-
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
+.text {
+  font-family: 'EB Garamond';
+  font-size: 10px;
+  text-align: center;
 }
 
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.5s;
+.main {
+  margin-left: 350px;
+  padding: 0px 10px;
 }
 
-.sidenav a:hover {
-  color: #f1f1f1;
+#friends {
+  right: 500px;
+  background-color: #eee8d5;
 }
 
-.sidenav .closebtn {
+#friendnav a {
   position: absolute;
+  top: -40px;
+  transition: 0.3s;
+  padding: 15px;
+  width: 100px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  border-radius: 0 0 5px 5px;
+  text-align: center;
+  color: #818181;
+}
+
+#friendnav a:hover {
   top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
+  color: #000000;
 }
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-
-.sidebar {
+.channelnav {
   height: 100%;
-  width: 210px;
+  width: 325px;
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #111;
+  background-color: #002b36;
   overflow-x: hidden;
   padding-top: 16px;
 }
 
-.sidebar a {
+.channelnav a {
+  text-align: center;
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 20px;
@@ -81,68 +67,67 @@ p.text {
   display: block;
 }
 
-.sidebar a:hover {
+.channelnav a:hover {
   color: #f1f1f1;
 }
 
-/*.main {
-  margin-left: 160px;  Same as the width of the sidenav 
-  padding: 0px 10px;
-}
-*/
-
-input[type=text] {
-  width: 55%;
-  padding: 9px 11px;
-  position:fixed;
-  top:550px;
-  left:230px;
-  right:200px;
-  box-sizing: border-box;
-  border-radius: 5px;
+@media screen and (max-height: 450px) {
+  .channelnav {padding-top: 15px;}
+  .channelnav a {font-size: 18px;}
 }
 
-
-.profilebtn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
+.profilenav {
+  height: 10%;
+  width: 500px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #000000;
+  overflow-x: hidden;
+  padding-top: 16px;
 }
 
-/* The container <div> - needed to position the dropdown content */
-.profile {
-  position: absolute;
-  display: inline-block;
-  float: right;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.profile-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 4;
-}
-
-/* Links inside the dropdown */
-.profile-content a {
-  color: black;
-  padding: 12px 16px;
+.profilenav a {
+  text-align: center;
+  padding: 6px 8px 6px 16px;
   text-decoration: none;
+  font-size: 20px;
+  color: #818181;
   display: block;
 }
 
-/* Change color of dropdown links on hover */
-.profile-content a:hover {background-color: #ddd;}
+.profilenav a:hover {
+  color: #f1f1f1;
+}
 
-/* Show the dropdown menu on hover */
-.profile:hover .profile-content {display: block;}
+@media screen and (max-height: 450px) {
+  .profilenav {padding-top: 15px;}
+  .profilenav a {font-size: 18px;}
+}
 
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.profile:hover .profilebtn {background-color: #3e8e41;}
+.functionalitynav {
+  height: 100%;
+  width: 500px;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #080808;
+  overflow-x: hidden;
+  padding-top: 20px;
+  margin-top: 100px;
+}
 
+.functionalitynav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  text-align: center;
+}
 
+.functionalitynav a:hover {
+  color: #f1f1f1;
+}

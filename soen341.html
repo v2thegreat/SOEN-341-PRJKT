@@ -1,46 +1,45 @@
 <!DOCTYPE html>
-<html margin:0;padding:0;height:100%;>
+<html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="soen341theme.css">
 </head>
+<body>
 
-<body height: 100%;>
-
-
-<div class="wrap">
-    <div class="left"></div>
-    <div class="middle"></div>
-    <div class="right"></div>
+<div id="friendnav" class="friendnav">
+  <a href="#friends" id="friends">Friends</a>
 </div>
 
-
-<div id="friendSideNav" class="sidenav">
-<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-<a href="#">Friend 1</a>
-<a href="#">Friend 2</a>
-<a href="#">Friend 3</a>
-<!--  ADD FRIEND FUNCTIONALITY  -->
-<a href="#">Add Friend +</a>
-</div> 
-
-<div class="sidebar">
-  <a href="#channel"><i class="channel"></i> channel 1</a>
-  <a href="#channel"><i class="channel"></i> channel 2</a>
-  <a href="#channel"><i class="channel"></i> channel 3</a>
-  <a href="#channel"><i class="channel"></i> Add Channel +</a>
+<div class="channelnav">
+  <a href="#channel1"><i class="channel"></i>Channel 1</a>
+  <a href="#channel2"><i class="channel"></i>Channel 2</a>
+  <a href="#channel3"><i class="channel"></i>Channel 3</a>
+  <a href="#channel4"><i class="channel"></i>Add Channel +</a>
 </div>
- 
-<!-- div class="main">
-<p class="title">Neos 341</p>
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Friends</span>
-</div> -->
+
+<div class="profilenav">
+  <a href="#userprofile"><i class="profile"></i>User Profile</a>
+</div>
+
+<div class="functionalitynav">
+  <a href="#functionality1">Functionality 1</a>
+  <a href="#functionality2">Functionality 2</a>
+  <a href="#functionality3">Functionality 3</a>
+  <a href="#functionality4">Functionality 4</a>
+</div>
+
+<!-- THE REST OF DEVIDED SREEN GOES HERE --> 
+
+<div class="main">
+<div class="title">Neos 143</div>
+</div>
+
 <!-- <script src="soen341script.js"></script> -->
 
 <script>
 function openNav() {
-  document.getElementById("friendSideNav").style.width = "250px";
+  document.getElementById("friendSideNav").style.width = "200px";
 }
 
 /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
@@ -48,20 +47,5 @@ function closeNav() {
   document.getElementById("friendSideNav").style.width = "0";
 }
 </script>
-
-<form>
-  <input type="text" id="message" name="message">
-</form>
-
-<div class="profile">
-  <button class="profilebtn">profile</button>
-  <div class="profile-content">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
-  </div>
-</div>
-
-
 </body>
 </html>
