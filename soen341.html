@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="soen341theme.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
 
@@ -15,7 +16,29 @@
   <a href="#channel1"><i class="channel"></i>Channel 1</a>
   <a href="#channel2"><i class="channel"></i>Channel 2</a>
   <a href="#channel3"><i class="channel"></i>Channel 3</a>
-  <a href="#channel4"><i class="channel"></i>Add Channel +</a>
+
+  <button class="w3-button w3-xlarge w3-circle w3-black" id="channelcreation" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">+</button>
+
+  <div id="id01" class="modal">
+    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <form class="modal-content" action="/action_page.php">
+      <div class="container">
+        <h1>Create Channel</h1>
+        <p>Please fill in this form to create a channel.</p>
+        <hr>
+        <label for="name"><b>Name</b></label>
+        <input type="text" class="channelname" placeholder="Enter channel name" name="channelname" required>
+
+        <label for="description"><b>Description</b></label>
+        <input type="text" class="channeldesc" placeholder="Enter description" name="description" >
+
+        <div class="clearfix">
+          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+          <button type="submit" class="createbtn">Create</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 
 <div class="profilenav">
@@ -29,15 +52,32 @@
   <a href="#functionality4">Functionality 4</a>
 </div>
 
+<form>
+  <input type="text" class ="messagebox" id="message" name="message" placeholder="Message #channelname">
+</form>
+
+
+<div class="messagearea" contenteditable="true">
+  NEOS 143
+<!--  ADD FUNCTION TO GET VALUE AND PASS TO DIV-->
+</div>
+
 <!-- THE REST OF DEVIDED SREEN GOES HERE --> 
 
 <div class="main">
-<div class="title">Neos 143</div>
+<div class="title" >Neos 143</div>
 </div>
 
 <!-- <script src="soen341script.js"></script> -->
 
 <script>
+  var modal = document.getElementById('id01');
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+  }
+
 function openNav() {
   document.getElementById("friendSideNav").style.width = "200px";
 }
