@@ -5,6 +5,7 @@ class user {
         this.createID();                              //a user shall have their own id which will be used by the program to sort through users
         this.channelList = [];                        //a user shall have access to all the channels they are a in and shall see all joined channels
     }
+
     //Getter function to find the user's name
     getName() {
         return this.name;
@@ -39,7 +40,7 @@ class user {
     }
 
     //a function that adds a new channel to the list of already joined channels (Can ve UPDATED)
-    addChannel(channelName) {
+    JoinChannel(channelName) {
         var found = false;
         for (var j = 0; j < this.channelList.length; j++) {
             if (this.channelList[i] == channelName) {
@@ -54,7 +55,6 @@ class user {
         //this function shall must make sure that the channel exists, fetch its id, and add it to the user's channel list
     }
 
-
     //Function to Search specific IDs to make sure there are no repeats
     searchJSON() {
         var found = false;
@@ -67,8 +67,7 @@ class user {
         return found;
     }
 
-
-    //Function that will add ther user to the JSON file
+    //Function that will add the user to the JSON file
     addToJson() {
         //this function must only add the user if the id is non-identical to a previous one, otherwise it should display an error
         if (this.searchJSON() == false) {
@@ -92,8 +91,8 @@ var temp = new user;
 var totalUsers = 0;
 temp.setName('asd');
 //console.log(temp.name);
-temp.addChannel('channel 1');
-temp.addChannel('CHANNEL 2');
+temp.JoinChannel('channel 1');
+temp.JoinChannel('CHANNEL 2');
 //for (i = 0; i < temp.channelList.length; i++) {
 //    console.log(temp.channelList[i]);
 //}
@@ -102,26 +101,27 @@ temp.addChannel('CHANNEL 2');
 temp.addToJson();
 
 //id reader tester
-for (var i = 0; i < myJSON.length; i++) {
-    console.log(myJSON[i].id);
-}
+// for (var i = 0; i < myJSON.length; i++) {
+//     console.log(myJSON[i].id);
+// }
 
 //channel reader tester
-//for (var i = 0; i < myJSON.length; i++) {
-//    for (var j = 0; j < myJSON[i].channelList.length; j++) {
-//        console.log(myJSON[i].channelList[j]);
-//    }
-//}
+for (var i = 0; i < myJSON.length; i++) {
+   for (var j = 0; j < myJSON[i].channelList.length; j++) {
+       console.log(myJSON[i].channelList[j]);
+   }
+}
 
 
 
+const fs=require('fs');
 
 //Add to file
-//fs.writeFile("Users.json", JSON.stringify(myJSON), function (err) {
-
+// fs.writeFile("Users.json", JSON.stringify(myJSON), function (err) {
+//
 //    if (err) {
 //        return console.log(err);
 //    }
-
+//
 //    console.log("The file was saved!");
-//});
+// });
