@@ -4,19 +4,6 @@ body {
   overflow-y:hidden;
 }
 
-.title {
-  position: static;
-  font-family: 'EB Garamond';
-  font-size: 50px;
-  margin-left: 400px;
-  color:#C0C0C0;
-}
-
-.text {
-  font-family: 'EB Garamond';
-  font-size: 10px;
-}
-
 .main {
   margin-left: 350px;
   padding: 0px 10px;
@@ -54,7 +41,7 @@ body {
   z-index: 1;
   background-color: #002b36;
   overflow-x: hidden;
-  padding-top: 16px;
+  padding-top: 1%;
 }
 
 .channelnav a {
@@ -76,62 +63,63 @@ body {
   .channelnav a {font-size: 18px;}
 }
 
-.profilenav {
-  font-family: "EB Garamond";
-  height: 10%;
-  width: 25%;
-  position: fixed;
-  z-index: 1;
-  right: 0;
-  background-color: #101010;
-  overflow-x: hidden;
-  /*padding-top: 16px;*/
-}
+  .profilenav {
+    font-family: "EB Garamond";
+    height: 10%;
+    width: 25%;
+    position: fixed;
+    z-index: 1;
+    right: 0;
+    background-color: #101010;
+    overflow-x: hidden;
+  }
 
-.profilenav a {
-  font-family: "EB Garamond";
-  text-align: center;
-  text-decoration: none;
-  font-size: 20px;
-  color: #818181;
-  margin-top:8%;
-  display: block;
-}
-
-.profilenav a:hover {
-  color: #f1f1f1;
-}
-
-@media screen and (max-height: 450px) {
-  .profilenav {padding-top: 15px;}
-  .profilenav a {font-size: 18px;}
-}
-
-.functionalitynav {
-  height: 100%;
-  width: 25%;
-  position: fixed;
-  z-index: 1;
-  right: 0;
-  background-color: #080808;
-  overflow-x: hidden;
-  padding-top: 1%;
-  margin-top: 5%;
-}
-
-.functionalitynav a {
-  padding: 6px 8px 6px 16px;
+  .profilenav a {
+    
     font-family: "EB Garamond";
     text-decoration: none;
-  font-size: 20px;
-  color: #818181;
-  display: block;
-  text-align: center;
-}
+    font-size: 20px;
+    color: #818181;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-.functionalitynav a:hover {
-  color: #f1f1f1;
-}
+  .profilenav a:hover {
+    color: #f1f1f1;
+  }
+
+  @media screen and (max-height: 450px) {
+    .profilenav {padding-top: 15px;}
+    .profilenav a {font-size: 18px;}
+  }
+
+  .functionalitynav {
+    height: 100%;
+    width: 25%;
+    position: fixed;
+    z-index: 2;
+    right: 0;
+    background-color: #080808;
+    overflow-x: hidden;
+    padding-top: 1%;
+    top: 10%;
+  }
+
+  .functionalitynav a {
+    padding: 6px 0px 6px 0px;
+    font-family: "EB Garamond";
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    text-align: center;
+  }
+
+  .functionalitynav a:hover {
+    color: #f1f1f1;
+  }
 
 .messagebox {
   width: 60%;
@@ -156,16 +144,18 @@ input:focus{
 }
 
 .messagearea{
+  /*pointer-events: none;*/
   pointer-events: none;
   position: absolute;
+  background-color: transparent;
   width:60%;
   left:15%;
   right:25%;
   top:0;
   border:0;
   border-radius: 3px;
-  scrollbar-arrow-color:yellow;
-  scrollbar-base-color:lightsalmon;
+  scrollbar-arrow-color:yellow; 
+  scrollbar-base-color:lightsalmon; 
   overflow: hidden;
   padding: 13px 14px;
   color: #666464;
@@ -197,9 +187,8 @@ input:focus{
 }
 
 #channelcreation{
-    margin-left: 70%;
+margin-left: 42.5%;
 }
-
 
 /* Extra styles for the cancel button */
 .cancelbtn {
@@ -241,11 +230,10 @@ input:focus{
 
 /* Modal Content/Box */
 .modal-content {
+  position: fixed;
   background-color: #fefefe;
-    position: fixed;
-  /*margin: 5% auto 10% auto; !* 5% from the top, 15% from the bottom and centered *!*/
-   top:10%;
-   left:30%;
+  top:10%;
+  left:30%;
   border: 1px solid #888;
   width: 35%; /* Could be more or less, depending on screen size */
 }
