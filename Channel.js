@@ -77,86 +77,118 @@ class channel {
 
     }
 
+}
+
+//Global function that creates a new Channel that will be called by the html code
+function createChannel(name){
+    var ch=new channel(name);
+}
+
+//Global function that Reads the json file. (BUG: Reading works, but can only store the data locally??)
+function readJSON (){
+    var temp= {"Channels":[]};
+    //Reads the contents of the json file and stores it as a string in var: data
+    fs.readFile('Channel.json', 'utf8', function read(err, data){
+        if (err){
+            console.log(err);
+        } else {
+            data=JSON.parse(data);  //data is now an object
+            console.log("Inside fs.readfile: ");
+            console.log(data);
+
+            for(var i=0;i<data["Channels"].length;i++){
+                temp["Channels"].push(data["Channels"][i]);
+            }
+            console.log("ChannelList after for loop")
+            console.log(temp);
+            return temp;
+        }
+
+    });
+
+    console.log("After the fs.readfile:");
+    console.log(channelList)
+
+
 
 }
 
-//Global function that can and will be used multiple times
-function readJSON (){
-    var data=["a"];
-    //var temp=require("./Channel.json");
-    myJSON=fs.readFile("./Channel.json", (err, data) => {
-        if (err) {
-            console.error(err)
-            return
-        }
-        data=JSON.parse(data);
-        //console.log("Inside fs.readfile: ");
-        data=JSON.stringify(data);
-        for (i=0;i<data.length;i++){
-            channelList.push(data[i]);
+//Global Rewrite file with new JSON objects (UPDATE: Make it create Channel.json if it doesnt already exist)
+function writeJSON() {
+
+    var json=JSON.stringify(channelList);
+    fs.readFile('Channel.json', 'utf8', function read(err, data){
+        if (err){
+            console.log(err);
+        } else {
+            data = JSON.parse(data); //now it an object
+            // console.log("Data extracted from Channel.json")
+            // console.log(data);
+            // console.log("Channel List BEFORE addition")
+             console.log(data.length)
+
+            for(var i=0;i<data["Channels"].length;i++)  //adds the readData to the channelLIst
+            channelList["Channels"].push(data["Channels"][i]);
+            //console.log("channelList after addition")
+            //console.log(channelList);
+            //convert it back to json
+            //Replace the data inside the .json file with the new channelList
+           fs.writeFile ("Channel.json", JSON.stringify(channelList), function(err) {
+                if (err) throw err;
+                //console.log('complete');
+            });
         }
     })
 
-    console.log("After the fs.readfile:");
-
-
-    // var temp=[];
-    // for (var i=0; i<myJSON.length;i++){
-    //     temp.push(myJSON[i]);
-    // }
-    // console.log(temp);
 
 }
 
-//Global Rewrite file with new JSON objects
-function writeJSON() {
-    fs.writeFile("Channel.json", JSON.stringify(channelList), function (err) {
-
-        if (err) {
-            return console.log(err);
-        }
-
-
-    });
-}
-
+//Global function that adds the name of the new channel to channelList (NEEDS UPDATE: Check the json file if channel already exists)
 function addList(channelName) {
     var found = false;
     try{
+        //Go through each channel in the channel list to make sure there are no duplicates
         for (var j = 0; j < channelList.length; j++) {
-            if (channelList[j] === channelName) {
-                //Channel Alerady Exists
+            if (channelList["Channels"][j] === channelName) {
+                //Channel Alerady Exists, don't add
                 found = true;
                 break;
             }
         }
 
+        //Channel was not found. add to the list
         if (found === false) {
-            channelList.push(channelName);
+            channelList["Channels"].push(channelName);
             console.log("channel created");
         }
     }
     catch (err) {
-        channelList.push(channelName);
-        console.log("channel created");
+        channelList["Channels"][0]=channelName;
+        console.log("First Channel Created");
     }
-    writeJSON();
+
     //this function shall must make sure that the channel exists, fetch its id, and add it to the user's channel list
 };
 
 const fs=require('fs');
-var channelList=[];
-var myJSON=new channel();
+let channelList={Channels:[]};
 
-
-//readJSON();
+//Tests
+//var myJSON=new channel();
 
 testChannelList();
-
+//TestRead();
 
 //channel list tester
 function testChannelList() {
-    temp = new channel(30);
-    temp = new channel(40);
+    temp = new channel("Channel 1");
+    temp = new channel("Temporary Channel");
     console.log(channelList)
+    writeJSON();
+}
+//Readfile tester
+function testRead(){
+    channelList=readJSON();
+    console.log("Out")
+    console.log(channelList);
 }
