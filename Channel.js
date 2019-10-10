@@ -83,7 +83,23 @@ class channel {
 //Global function that can and will be used multiple times
 function readJSON (){
 
-    channelList=require("./Channel.json");
+    //var temp=require("./Channel.json");
+    var temp=fs.readFile("Channel.json",function read(err, data) {
+        if(err) {
+            throw err;
+        }
+        console.log("inside readfile");
+        console.log(data);
+    });
+
+    console.log("after readfile");
+console.log(temp)
+
+    // var temp=[];
+    // for (var i=0; i<myJSON.length;i++){
+    //     temp.push(myJSON[i]);
+    // }
+    // console.log(temp);
 
 }
 
@@ -95,7 +111,7 @@ function writeJSON() {
             return console.log(err);
         }
 
-        console.log("The file was saved!");
+
     });
 }
 
@@ -125,9 +141,10 @@ function addList(channelName) {
 
 const fs=require('fs');
 var channelList=[];
+var myJSON=new channel();
 testChannelList();
 
-
+readJSON();
 
 //channel list tester
 function testChannelList() {
