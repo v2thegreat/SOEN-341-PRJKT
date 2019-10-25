@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="soen341theme.css">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="soen341theme.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
 
@@ -41,7 +41,9 @@
 </div>
 
 <div class="profilenav">
-  <a href="#userprofile"><i class="profile"></i>User Profile</a>
+  <a href="profilepage.html"
+     onclick="window.open('profilepage.html','newwindow','width=300,height=250');
+              return false;"></i>User Profile</a>
 </div>
 
 <div class="functionalitynav">
@@ -58,7 +60,7 @@
 
 <div class="messagearea" contenteditable="true">
   NEOS 143
-<!--  ADD FUNCTION TO GET VALUE AND PASS TO DIV-->
+  <!--  ADD FUNCTION TO GET VALUE AND PASS TO DIV-->
 </div>
 
 
@@ -70,16 +72,14 @@
   window.onclick = function(event) {
     if (event.target == modal) {
       modal.style.display = "none";
-  }
-
-function openNav() {
-  document.getElementById("friendSideNav").style.width = "200px";
-}
-
-/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-function closeNav() {
-  document.getElementById("friendSideNav").style.width = "0";
-}
+    }
+    function openNav() {
+      document.getElementById("friendSideNav").style.width = "200px";
+    }
+    /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+    function closeNav() {
+      document.getElementById("friendSideNav").style.width = "0";
+    }
 </script>
 </body>
 </html>
