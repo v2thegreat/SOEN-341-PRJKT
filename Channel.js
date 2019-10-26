@@ -176,13 +176,13 @@ let channelList={Channels:[]};
 //Tests
 //var myJSON=new channel();
 
-testChannelList();
+TestChannel();
 //TestRead();
 
 //channel list tester
-function testChannelList() {
-    temp = new channel("Channel 1");
-    temp = new channel("Temporary Channel");
+function TestChannel() {
+    temp = new channel("channel");
+    temp = new channel("try");
     console.log(channelList)
     writeJSON();
 }
