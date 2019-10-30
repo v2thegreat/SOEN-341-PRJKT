@@ -22,7 +22,7 @@ class ChannelListComponent extends React.Component {
         if (this.props.channels.length > 0) {
             return (
                 <main className={classes.root}>
-                    <Button variant='contained'
+                    <Button variant="contained"
                         fullWidth 
                         className={classes.newChannelButton}
                         onClick={this.newChannel}>
@@ -49,7 +49,13 @@ class ChannelListComponent extends React.Component {
                                                             {_channel.messages[_channel.messages.length - 1].message.substring(0, 30) + '...'}
                                                         </Typography>
                                                     </React.Fragment>
-                                                } />
+                                                } >
+                                            </ListItemText>
+                                            {
+                                                _channel.receiverHasRead === false && !this.userIsSender(_channel) ?
+                                                    <ListItemIcon><NotificationImportant className={classes.unreadMessage}></NotificationImportant></ListItemIcon> :
+                                                    null
+                                            }
                                         </ListItem>
                                         <Divider>
 
@@ -76,12 +82,12 @@ class ChannelListComponent extends React.Component {
     }
 
     newChannel = () => {
-        console.log("Create new channel")
+        this.props.newChannelButton();
     }
 
-    selectChannel = (index) => {
-        console.log('Select channel', index);
-    }
+    selectChannel = (index) => this.props.selectChannelButton(index);
+    userIsSender = (channel) => channel.messages[channel.messages.length - 1].sender === this.props.userEmail;
+
 }
 
 export default withStyles(styles)(ChannelListComponent)
