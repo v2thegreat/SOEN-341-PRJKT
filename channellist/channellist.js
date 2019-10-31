@@ -80,7 +80,8 @@ class ChannelListComponent extends React.Component {
     }
 
     selectChannel = (index) => {
-        console.log('Select channel', index);
+
+        this.props.selectChannelButton(index);
     }
 }
 
