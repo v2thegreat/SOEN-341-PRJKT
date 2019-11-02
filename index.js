@@ -17,8 +17,7 @@ firebase.initializeApp({
     projectId: "soen341project-58a44",
     storageBucket: "soen341project-58a44.appspot.com",
     messagingSenderId: "871528591072",
-    appId: "1:871528591072:web:ff4cefa8f1ca0d9212aa85",
-    
+    appId: "1:871528591072:web:ff4cefa8f1ca0d9212aa85",  
 });
 
 const routing = (

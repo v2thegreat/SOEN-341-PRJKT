@@ -19,7 +19,7 @@ class ChannelViewComponent extends React.Component {
                 <div>
                     {/*div not working*/}
                     <div className={classes.channelHeader}>
-                        Your channel
+                        Your channel {channel.users.filter(_usr => _usr !== user)[0]}
                     </div>
 
                     <main id='channelview-container' className={classes.content}>

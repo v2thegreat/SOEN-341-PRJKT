@@ -69,7 +69,7 @@ class ChannelListComponent extends React.Component {
                         className={classes.newChannelButton}>
                         Add Channel
                     </Button>
-                    <List></List>
+                    <List> </List>
                 </main>
             )
         }

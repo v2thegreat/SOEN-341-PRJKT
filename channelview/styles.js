@@ -7,7 +7,7 @@ const styles = theme => ({
         marginLeft: '300px',
         boxSizing: 'border-box',
         overflowY: 'scroll',
-        top: '50px',
+        top: '35px',
         width: 'calc(100% - 300px)',
         position: 'absolute'
     },
@@ -38,16 +38,16 @@ const styles = theme => ({
         borderRadius: '10px'
     },
 
-    chatHeader: {
+    channelHeader: {
         width: 'calc(100% - 301px)',
-        height: '50px',
+        height: '35px',
         backgroundColor: '#344195',
         position: 'fixed',
         marginLeft: '301px',
         fontSize: '18px',
         textAlign: 'center',
         color: 'white',
-        paddingTop: '10px',
+        paddingTop: '1vh',
         boxSizing: 'border-box'
     }
 
