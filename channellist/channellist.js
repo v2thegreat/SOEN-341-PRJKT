@@ -46,10 +46,17 @@ class ChannelListComponent extends React.Component {
                                                     <React.Fragment>
                                                         <Typography component='span'
                                                             color='textPrimary'>
-                                                            {_channel.messages[_channel.messages.length - 1].message.substring(0, 30) + '...'}
+                                                            {_channel.messages[_channel.messages.length - 1].message.substring(0, 50) + '...'}
                                                         </Typography>
                                                     </React.Fragment>
-                                                } />
+                                                }>
+                                            </ListItemText>    
+                                            {
+                                                _channel.seenMessage === false && !this.userIsSender(_channel) ?
+                                                <ListItemIcon>
+                                                    <NotificationImportant className={classes.unreadMessage}></NotificationImportant>
+                                                </ListItemIcon> : null
+                                            }
                                         </ListItem>
                                         <Divider>
 
@@ -76,13 +83,14 @@ class ChannelListComponent extends React.Component {
     }
 
     newChannel = () => {
-        console.log("Create new channel")
+        this.props.newChannelButton();
     }
 
     selectChannel = (index) => {
-
         this.props.selectChannelButton(index);
     }
+
+    userIsSender = (channel) => channel.messages[channel.messages.length - 1].sender === this.props.userEmail;
 }
 
 export default withStyles(styles)(ChannelListComponent)

@@ -6,8 +6,8 @@ const styles = theme => ({
         width: '300px',
         borderRadius: '0px',
         backgroundColor: '#227092',
-        height: '35px',
-        boxShadow: '0px 0px 2px black',
+        height: '5vh',
+        
         color: 'white'
     }
 });
