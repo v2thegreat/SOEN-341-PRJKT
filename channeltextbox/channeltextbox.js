@@ -10,8 +10,9 @@ class ChannelTextBoxComponent extends React.Component {
         super();
         this.state = {
             channelText:''
-        }
+        }; //FORGOT ;
     }
+
     render() {
         const {classes} = this.props;
         return (
@@ -21,13 +22,16 @@ class ChannelTextBoxComponent extends React.Component {
                            id='channeltextbox'
                            className={classes.channelTextBox}
                            onFocus={this.userClickedInput}></TextField>
-                <Send onClick={this.submitMessage} className={classes.sendBtn}></Send>
+                <Send onClick={this.submitMessage} className={classes.sendButton}></Send>
             </div>)
     };
+    //MISTAKE CHATTEXT => CHANNELTEXT
+    userTyping = (e) => e.keyCode === 13 ? this.submitMessage() : this.setState({channelText: e.target.value});
 
-    userTyping = (e) => e.keyCode === 13 ? this.submitMessage() : this.setState({ chatText: e.target.value});
-    messageValid = (txt) => txt && txt.replace(/\s/g,'').length;
-    userClickedInput = () => console.log('clicked input');
+    messageValid = (text) => text && text.replace(/\s/g,'').length;
+
+    userClickedInput = () => this.props.messageReadFn();
+
     submitMessage = () => {
         if(this.messageValid(this.state.channelText)){
             this.props.submitMessageFn(this.state.channelText);

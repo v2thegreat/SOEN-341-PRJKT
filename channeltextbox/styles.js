@@ -1,7 +1,7 @@
 const styles = theme => ({
 
-    sendBtn: {
-        color: 'blue',
+    sendButton: {
+        color: 'darkblue',
         cursor: 'pointer',
         '&:hover': {
             color: 'gray'
@@ -9,8 +9,8 @@ const styles = theme => ({
     },
 
     channelTextBoxContainer: {
-        position: 'absolute',
-        bottom: '15px',
+        position: 'fixed',
+        bottom: '10px',
         left: '315px',
         boxSizing: 'border-box',
         overflow: 'auto',

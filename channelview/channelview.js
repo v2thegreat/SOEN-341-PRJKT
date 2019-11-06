@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './styles';
+import scrollbar from './scrollbar';
 import { withStyles } from '@material-ui/core/styles';
 
 class ChannelViewComponent extends React.Component {
@@ -12,14 +13,15 @@ class ChannelViewComponent extends React.Component {
 
     render() {
         const {classes, channel, user} = this.props;
+        
         if (channel === undefined) {
-            return (<main id='channelview-container' className={classes.content}></main>);
+            return (<div className={classes.channelPage}><div className={classes.channelTitle}>WELCOME TO SOEN 341</div></div>);
         } else {
             return (
                 <div>
-                    {/*div not working*/}
                     <div className={classes.channelHeader}>
                         Your channel {channel.users.filter(_usr => _usr !== user)[0]}
+                        {/* GIVE CHANNEL NAME */}
                     </div>
 
                     <main id='channelview-container' className={classes.content}>
@@ -28,6 +30,7 @@ class ChannelViewComponent extends React.Component {
                                 return (
                                     <div key={_index}
                                          className={_msg.sender === user ? classes.userSent : classes.friendSent}>
+                                             {/* DISPLAY WHO IS COMMENTING HERE */}
                                         {_msg.message}
                                     </div>
                                 )
