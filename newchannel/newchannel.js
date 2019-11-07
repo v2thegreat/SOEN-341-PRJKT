@@ -8,6 +8,7 @@ class NewChannelComponent extends React.Component {
     constructor() {
       super();
       this.state = {
+        channelname: null,
         username: null,
         message: null
       };
@@ -21,8 +22,15 @@ class NewChannelComponent extends React.Component {
             <main className={classes.main}>
                 <CssBaseline></CssBaseline>
                 <Paper className={classes.paper}>
-                    <Typography component="h1" variant="h5">Send message</Typography>
+                    <Typography component="h1" variant="h5">Create Channel</Typography>
                     <form className={classes.form} onSubmit={(e) => this.submitNewChannel(e)}>
+                        <FormControl fullWidth>
+                            <InputLabel htmlFor="new-channel-channelname">
+                                Enter Your Channelname
+                            </InputLabel>
+                            <Input required className={classes.input} autoFocus onChange={(e) => this.userTyping('channelname', e)} id='new-channel-channelname'>
+                            </Input>
+                        </FormControl>
                         <FormControl fullWidth>
                             <InputLabel htmlFor="new-channel-username">
                                 Enter Friend's Username
@@ -46,10 +54,14 @@ class NewChannelComponent extends React.Component {
 
     userTyping = (type, e) => {
         switch (type) {
+            case 'channelname':
+                this.setState({channelname: e.target.value});
+                break;
+
             case 'username':
               this.setState({username: e.target.value});
               break;
-            
+
             case 'message':
               this.setState({message: e.target.value});
               break;
@@ -60,15 +72,16 @@ class NewChannelComponent extends React.Component {
 
     submitNewChannel = async (e) => {
         e.preventDefault();
-        const userExists = await this.userExists();
-        if(userExists) {
+        // const userExists = await this.userExists();
+        // if(userExists) {
             const channelExists = await this.channelExists();
             channelExists ? this.goToChannel() : this.createChannel();
-        }
+        // }
     }
 
     createChannel = () => {
         this.props.newChannelSubmitFn({
+          channelname: this.state.channelname,
           sendTo: this.state.username,
           message: this.state.message
         });
@@ -88,19 +101,19 @@ class NewChannelComponent extends React.Component {
     }
 
     //makes sure no 2 channel with same person but that considering 2 people
-    userExists = async () => {
-        const usersSnapshot = await 
-        firebase
-          .firestore()
-          .collection('users')
-          .get();
-        const exists = usersSnapshot.docs
-            .map(_doc => _doc.data().email)
-            .includes(this.state.username);
-        //this.setState({ serverError: !exists });
-        return exists;
-      }
-
-}  
+//     userExists = async () => {
+//         const usersSnapshot = await
+//         firebase
+//           .firestore()
+//           .collection('users')
+//           .get();
+//         const exists = usersSnapshot.docs
+//             .map(_doc => _doc.data().email)
+//             .includes(this.state.username);
+//         //this.setState({ serverError: !exists });
+//         return exists;
+//       }
+//
+}
 
 export default withStyles(styles)(NewChannelComponent);

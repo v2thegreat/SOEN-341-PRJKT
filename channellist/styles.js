@@ -21,6 +21,12 @@ const styles = theme => ({
       backgroundColor: '#7289DA',
       borderRadius: '0px'
     },
+    joinChannelButton: {
+        height: '5vh',
+        color: 'white',
+        backgroundColor: '#7289DA',
+        borderRadius: '0px'
+    },
     unreadMessage: {
       color: 'navyblue',
       position: 'absolute',
