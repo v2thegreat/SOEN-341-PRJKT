@@ -23,10 +23,16 @@ class ChannelListComponent extends React.Component {
             return (
                 <main className={classes.root}>
                     <Button variant='contained'
-                        fullWidth 
+                        fullWidth
                         className={classes.newChannelButton}
                         onClick={this.newChannel}>
                         Add Channel
+                    </Button>
+                    <Button variant='contained'
+                            fullWidth
+                            className={classes.joinChannelButton}
+                            onClick={this.joinChannel}>
+                        Join Channel
                     </Button>
                     <List>
                         {
@@ -41,7 +47,7 @@ class ChannelListComponent extends React.Component {
                                                 <Avatar alt='Remy Sharp'>{_channel.users.filter(_user => _user !== this.props.userEmail)[0].split('')[0]}</Avatar>
                                             </ListItemAvatar>
                                             <ListItemText
-                                                primary={_channel.users.filter(_user => _user !== this.props.userEmail)[0]}
+                                                primary={_channel.channelname}
                                                 secondary={
                                                     <React.Fragment>
                                                         <Typography component='span'
@@ -76,6 +82,12 @@ class ChannelListComponent extends React.Component {
                         className={classes.newChannelButton}>
                         Add Channel
                     </Button>
+                    <Button variant='contained'
+                            fullWidth
+                            className={classes.joinChannelButton}
+                            onClick={this.joinChannel}>
+                        Join Channel
+                    </Button>
                     <List> </List>
                 </main>
             )
@@ -84,6 +96,10 @@ class ChannelListComponent extends React.Component {
 
     newChannel = () => {
         this.props.newChannelButton();
+    }
+
+    joinChannel = () => {
+        this.props.joinChannelButton();
     }
 
     selectChannel = (index) => {

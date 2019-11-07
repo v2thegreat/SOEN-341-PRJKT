@@ -20,7 +20,7 @@ class ChannelViewComponent extends React.Component {
             return (
                 <div>
                     <div className={classes.channelHeader}>
-                        Your channel {channel.users.filter(_usr => _usr !== user)[0]}
+                        Your channel {channel.channelname}
                         {/* GIVE CHANNEL NAME */}
                     </div>
 
@@ -31,6 +31,7 @@ class ChannelViewComponent extends React.Component {
                                     <div key={_index}
                                          className={_msg.sender === user ? classes.userSent : classes.friendSent}>
                                              {/* DISPLAY WHO IS COMMENTING HERE */}
+                                        {_msg.sender} says:<br/>
                                         {_msg.message}
                                     </div>
                                 )

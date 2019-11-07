@@ -5,6 +5,9 @@ import ChannelListComponent from '../channellist/channellist'
 import ChannelViewComponent from '../channelview/channelview';
 import ChannelTextBoxComponent from '../channeltextbox/channeltextbox';
 import NewChannelComponent from '../newchannel/newchannel';
+import JoinChannelComponent from '../joinchannel/joinchannel';
+
+
 const firebase = require("firebase");
 
 class DashboardComponent extends React.Component{
@@ -26,6 +29,7 @@ class DashboardComponent extends React.Component{
         <div>
             <ChannelListComponent history={this.props.history}
                                   newChannelButton={this.newChannelButtonClick}
+                                  joinChannelButton={this.joinChannelButtonClick}
                                   selectChannelButton={this.selectChannel}
                                   channels={this.state.channels}
                                   userEmail={this.state.email}
@@ -45,6 +49,9 @@ class DashboardComponent extends React.Component{
             }
             {
                 this.state.newChannelFormVisible ? <NewChannelComponent goToChannelFn={this.goToChannel} newChannelSubmitFn={this.newChannelSubmit}></NewChannelComponent> : null
+            }
+            {
+                this.state.joinChannelFormVisible ? <JoinChannelComponent joinChannelFn={this.joinChannel} joinChannelSubmitFn={this.joinChannelSubmit}></JoinChannelComponent> : null
             }
             <Button className={classes.signOutBtn} onClick={this.signOut} >Sign Out</Button>
         </div>
@@ -70,10 +77,25 @@ class DashboardComponent extends React.Component{
                 seenMessage: false
             });
     }
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    joinChannelSubmit = async (channelname) => {
+        // const path = firebase.firestore.FieldPath(channelname);
+        var channelsRef = firebase.firestore.collection("channels");
+        var query = channelsRef.where("channelname", "==", channelname);
+        // const docKey = channelRef.orderByChild("channelname").equalTo(joinchannelname).on("child_added");
+        firebase.firestore().doc(query).set({
+                users: this.state.email
+    });
+        this.selectChannel(this.state.channels.length - 1);
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    }
     //BUILD DOC KEY NO PROPERLY FORMATTED
     buildDocKey = (friend) => [this.state.email, friend].sort().join(':');
 
     newChannelButtonClick = () => this.setState({newChannelFormVisible: true, selectChannel: null});
+    joinChannelButtonClick = () => this.setState({joinChannelFormVisible: true, selectChannel: null});
 
     messageRead = () => {
         const docKey = this.buildDocKey(this.state.channels[this.state.selectedChannel].users.filter(_usr => _usr !== this.state.email)[0]);
@@ -84,9 +106,10 @@ class DashboardComponent extends React.Component{
         }
     }
 
-    goToChannel = async (docKey, msg) => {
-        const usersInChannel = docKey.split(':');
-        const channel = this.state.chats.find(_channel => usersInChannel.every(_user => _channel.users.includes(_user)));
+    goToChannel = async (channelname, msg) => {
+        // const usersInChannel = docKey.split(':');
+        // const channel = this.state.channels.find(_channel => usersInChannel.every(_user => _channel.users.includes(_user)));
+        const channel = this.state.channels.find(_channel => channel.channelname == this.channelname);
         this.setState({newChannelFormVisible: false});
         await this.selectChannel(this.state.channels.indexOf(channel));
         this.submitMessage(msg);
@@ -114,6 +137,7 @@ class DashboardComponent extends React.Component{
             .collection('channels')
             .doc(docKey)
             .set({
+              channelname: channelObj.channelname,
               messages: [{
                 message: channelObj.message,
                 sender: this.state.email
@@ -124,6 +148,14 @@ class DashboardComponent extends React.Component{
         this.setState({ newChannelFormVisible: false });
         this.selectChannel(this.state.channels.length - 1);
       }
+
+      // newChannelJoin = async(channelObj) =>{
+      //   const docKey = this.buildDocKey(channelObj.sendTo);
+      //   await
+      //       firebase
+      //           .firestore()
+      //           .collection('channels/')
+      // }
 
     clickedChannelNotSender = (channelIndex) => this.state.channels[channelIndex].messages[this.state.channels[channelIndex].messages.length-1].sender !== this.state.email;
 
