@@ -18,17 +18,17 @@ class JoinChannelComponent extends React.Component {
                 <CssBaseline></CssBaseline>
                 <Paper className={classes.paper}>
                     <Typography component="h1" variant="h5">Join Channel</Typography>
-                    <form className={classes.form} onSubmit={(e) => this.submitJoinChannel(e)}>
+                    <form className={classes.form} onSubmit={(e) => this.writeData(e)}>
                         <FormControl fullWidth>
                             <InputLabel htmlFor="join-channel-channelname">
                                 Enter the channel name
                             </InputLabel>
                             <Input required className={classes.input} autoFocus
-                                   onChange={(e) => this.userTyping(e)} id='join-channel-channelname'>
+                                  type = "text" id='nameField'>
                             </Input>
                         </FormControl>
                         <Button fullWidth className={classes.submit} variant='contained' color="primary"
-                                type="submit">Submit</Button>
+                                 type="submit" onClick={this.writeData}>Submit</Button>
                     </form>
                 </Paper>
             </main>
@@ -36,19 +36,14 @@ class JoinChannelComponent extends React.Component {
 
     }
 
-    userTyping = (e) => this.setState({channelname: e.target.value});
+   writeData = () => {
+       var joinchannelname = document.getElementById("nameField").value;
+       const email = firebase.auth().currentUser.email;
+       firebase.firestore().collection('channels').doc(joinchannelname).update({
+           users: firebase.firestore.FieldValue.arrayUnion(email)
+       });
 
-    submitJoinChannel = async (e) => {this.joinChannel(); this.goToChannel();}
-
-    joinChannel = () => {
-        this.props.joinChannelFn({channelname: this.state.channelname});
     }
-    goToChannel = () => this.props.goToChannelFn(this.buildDocKey(), this.message);
-
-
-    // buildDocKey = () => {
-    //     return [firebase.auth().currentUser.email, this.state.username].sort().join(':');
-    // }
 
 }
 export default withStyles(styles)(JoinChannelComponent);
