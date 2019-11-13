@@ -1,44 +1,45 @@
 const styles = theme => ({
-    main: {
-      width: 'auto',
-      display: 'block', // Fix IE 11 issue.
-      marginLeft: theme.spacing.unit * 3,
-      marginRight: theme.spacing.unit * 3,
-      [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
-        width: 400,
-        marginLeft: 'auto',
-        marginRight: 'auto',
-      },
-    },
-    paper: {
-      marginTop: theme.spacing.unit * 8,
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
-    },
-    form: {
-      width: '100%',
-      marginTop: theme.spacing.unit,
-    },
-    submit: {
-      color: '#7289DA',
-      marginTop: theme.spacing.unit * 3,
-    },
-    logInLink: {
-      marginTop: theme.spacing.unit,
-      fontSize: '12px',
-      fontFamily: 'Uni Sans',
-      textAlign: 'left',
-      width: '100%',
-      textDecoration: 'none',
-      color: '#7289DA',
-      fontWeight: 'bolder'
-    },
-    errorText: {
-      color: 'red',
-      textAlign: 'center'
+  main: {
+    width: 'auto',
+    display: 'block', // Fix IE 11 issue.
+    marginLeft: theme.spacing.unit * 3,
+    marginRight: theme.spacing.unit * 3,
+    [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
+      width: 400,
+      marginLeft: 'auto',
+      marginRight: 'auto'
     }
-  });
-  
-  export default styles;
+  },
+  paper: {
+    marginTop: theme.spacing.unit * 8,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit *
+    3}px ${theme.spacing.unit * 3}px`
+  },
+  form: {
+    width: '100%',
+    marginTop: theme.spacing.unit
+  },
+  submit: {
+    color: '#7289DA',
+    marginTop: theme.spacing.unit * 3
+  },
+  logInLink: {
+    marginTop: theme.spacing.unit,
+    fontSize: '12px',
+    fontFamily: 'Uni Sans',
+    textAlign: 'left',
+    width: '100%',
+    textDecoration: 'none',
+    color: '#7289DA',
+    fontWeight: 'bolder'
+  },
+  errorText: {
+    color: 'red',
+    textAlign: 'center'
+  }
+})
+
+export default styles
