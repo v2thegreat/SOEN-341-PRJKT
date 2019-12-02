@@ -38,25 +38,25 @@ class SignupComponent extends React.Component {
             <form onSubmit={(e) => this.submitSignUp(e)}
                   className={classes.form}>
               <FormControl required fullWidth margin='normal'>
-                <InputLabel htmlFor='signup-email-input'>Enter Your
+                <InputLabel htmlFor='signupEmailInput'>Enter Your
                   Email</InputLabel>
                 <Input autoComplete='email' autoFocus
                        onChange={(e) => this.userTyping('email', e)}
-                       id='signup-email-input'></Input>
+                       id='signupEmailInput'></Input>
               </FormControl>
               <FormControl required fullWidth margin='normal'>
-                <InputLabel htmlFor='signup-password-input'>Create A
+                <InputLabel htmlFor='signupPasswordInput'>Create A
                   Password</InputLabel>
                 <Input type="password"
                        onChange={(e) => this.userTyping('password', e)}
-                       id='signup-password-input'></Input>
+                       id='signupPasswordInput'></Input>
               </FormControl>
               <FormControl required fullWidth margin='normal'>
-                <InputLabel htmlFor='signup-password-confirmation-input'>Confirm
+                <InputLabel htmlFor='signupPasswordConfirmationInput'>Confirm
                   Your Password</InputLabel>
                 <Input type="password"
                        onChange={(e) => this.userTyping('passwordConfirmation',
-                           e)} id='signup-password-confirmation-input'></Input>
+                           e)} id='signupPasswordConfirmationInput'></Input>
               </FormControl>
               <Button type='submit' fullWidth variant='contained'
                       color='primary' className={classes.submit}>Submit</Button>
@@ -97,7 +97,7 @@ class SignupComponent extends React.Component {
 
   formIsValid = () => this.state.password === this.state.passwordConfirmation;
 
-  submitSignup = (e) => {
+  submitSignUp = (e) => {
     e.preventDefault(); // This is to prevent the automatic refreshing of the page on submit.
 
     if (!this.formIsValid()) {
@@ -105,19 +105,19 @@ class SignupComponent extends React.Component {
       return;
     }
 
-    firebase.auth().
-        createUserWithEmailAndPassword(this.state.email, this.state.password).
-        then(authRes => {
+    firebase.auth()
+    .createUserWithEmailAndPassword(this.state.email, this.state.password)
+    .then(authRes => {
           const userObj = {
             email: authRes.user.email,
             friends: [],
             messages: [],
           };
-          firebase.firestore().
-              collection('users').
-              doc(this.state.email).
-              set(userObj).
-              then(() => {
+          firebase.firestore()
+          .collection('users')
+          .doc(this.state.email)
+          .set(userObj)
+          .then(() => {
                 this.props.history.push('/dashboard');
               }, dbErr => {
                 console.log('Failed to add user to the database: ', dbErr);

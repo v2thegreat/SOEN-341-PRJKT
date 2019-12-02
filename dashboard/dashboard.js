@@ -101,10 +101,10 @@ class DashboardComponent extends React.Component {
         this.state.channels[this.state.selectedChannel].users.filter(
             _usr => _usr !== this.state.email)[0]);
     if (this.clickedChannelNotSender(this.state.selectedChannel)) {
-      firebase.firestore().
-          collection('channels').
-          doc(docKey).
-          update({seenMessage: true});
+      firebase.firestore()
+      .collection('channels')
+      .doc(docKey)
+      .update({seenMessage: true});
     } else {
       console.log('clicked message where user is sender');
     }
@@ -122,9 +122,8 @@ class DashboardComponent extends React.Component {
     const docKey = this.buildDocKey(channelObj.sendTo);
     await
         firebase.firestore().collection('channels').doc(docKey).set({
-          channelname: channelObj.channelname,
-          messages: [
-            {
+          channelName: channelObj.channelName,
+          messages: [{
               message: channelObj.message,
               sender: this.state.email,
             }],
@@ -135,18 +134,18 @@ class DashboardComponent extends React.Component {
     this.selectChannel(this.state.channels.length - 1);
   };
 
-  clickedChannelNotSender = (channelIndex) => this.state.channels[channelIndex].messages[this.state.channels[channelIndex].messages.length -
-  1].sender !== this.state.email;
+  clickedChannelNotSender = (channelIndex) => this.state.channels[channelIndex].messages[this.state.channels[channelIndex]
+    .messages.length - 1].sender !== this.state.email;
 
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged(async _user => {
       if (!_user)
         this.props.history.push('/login');
       else {
-        await firebase.firestore().
-            collection('channels').
-            where('users', 'array-contains', _user.email).
-            onSnapshot(async res => {
+        await firebase.firestore()
+        .collection('channels')
+        .where('users', 'array-contains', _user.email)
+        .onSnapshot(async res => {
               const channels = res.docs.map(_doc => _doc.data());
               await this.setState({
                 email: _user.email,

@@ -18,8 +18,8 @@ class NewChannelComponent extends React.Component {
   constructor() {
     super();
     this.state = {
-      channelname: null,
-      username: null,
+      channelName: null,
+      userName: null,
       message: null,
     };
   };
@@ -32,39 +32,39 @@ class NewChannelComponent extends React.Component {
         <main className={classes.main}>
           <CssBaseline></CssBaseline>
           <Paper className={classes.paper}>
-            <Typography component="h1" variant="h5">Create Channel</Typography>
+            <Typography component='h1' variant='h5'>Create Channel</Typography>
             <form className={classes.form}
                   onSubmit={(e) => this.submitNewChannel(e)}>
               <FormControl fullWidth>
-                <InputLabel htmlFor="new-channel-channelname">
+                <InputLabel htmlFor='newChannelChannelName'>
                   Enter Your Channelname
                 </InputLabel>
                 <Input required className={classes.input} autoFocus
-                       onChange={(e) => this.userTyping('channelname', e)}
-                       id='new-channel-channelname'>
+                       onChange={(e) => this.userTyping('channelName', e)}
+                       id='newChannelChannelName'>
                 </Input>
               </FormControl>
               <FormControl fullWidth>
-                <InputLabel htmlFor="new-channel-username">
-                  Enter Friend's Username
+                <InputLabel htmlFor='newChannelUserName'>
+                  Enter Friend's UserName
                 </InputLabel>
                 <Input required className={classes.input} autoFocus
-                       onChange={(e) => this.userTyping('username', e)}
-                       id='new-channel-username'>
+                       onChange={(e) => this.userTyping('userName', e)}
+                       id='newChannelUserName'>
                 </Input>
               </FormControl>
               <FormControl fullWidth>
-                <InputLabel htmlFor="new-channel-message">
+                <InputLabel htmlFor='newChannelMessage'>
                   Enter your message
                 </InputLabel>
                 <Input required className={classes.input} autoFocus
                        onChange={(e) => this.userTyping('message', e)}
-                       id='new-channel-message'>
+                       id='newChannelMessage'>
                 </Input>
               </FormControl>
               <Button fullWidth className={classes.submit} variant='contained'
-                      color="primary"
-                      type="submit">Submit</Button>
+                      color='primary'
+                      type='submit'>Submit</Button>
             </form>
           </Paper>
         </main>
@@ -73,12 +73,12 @@ class NewChannelComponent extends React.Component {
 
   userTyping = (type, e) => {
     switch (type) {
-      case 'channelname':
-        this.setState({channelname: e.target.value});
+      case 'channelName':
+        this.setState({channelName: e.target.value});
         break;
 
-      case 'username':
-        this.setState({username: e.target.value});
+      case 'userName':
+        this.setState({userName: e.target.value});
         break;
 
       case 'message':
@@ -91,14 +91,17 @@ class NewChannelComponent extends React.Component {
 
   submitNewChannel = async (e) => {
     e.preventDefault();
-    const channelExists = await this.channelExists();
-    channelExists ? this.goToChannel() : this.createChannel();
-  };
+    const userExists = await this.userExists();
+    if(userExists) {
+      const channelExists = await this.channelExists();
+      channelExists ? this.goToChannel() : this.createChannel();
+    }
+    };
 
   createChannel = () => {
     this.props.newChannelSubmitFn({
-      channelname: this.state.channelname,
-      sendTo: this.state.username,
+      channelName: this.state.channelName,
+      sendTo: this.state.userName,
       message: this.state.message,
     });
   };
@@ -107,19 +110,32 @@ class NewChannelComponent extends React.Component {
       this.message);
 
   buildDocKey = () => {
-    return [firebase.auth().currentUser.email, this.state.username].sort().
-        join(':');
+    return [firebase.auth().currentUser.email, this.state.userName].sort().join(':');
   };
 
   channelExists = async () => {
     const docKey = this.buildDocKey();
-    const channel = await firebase.firestore().
-        collection('channels').
-        doc(docKey).
-        get();
+    const channel = await firebase.firestore()
+      .collection('channels')
+      .doc(docKey)
+      .get();
     console.log(channel.exists);
     return channel.exists;
   };
+
+  userExists = async () => {
+    const usersSnapshot = await
+      firebase
+      .firestore()
+      .collection('users')
+      .get();
+    const exists = usersSnapshot
+    .docs
+    .map(_doc => _doc.data().email)
+    .includes(this.state.userName);
+    this.setState({ serverError: !exists });
+    return exists;
+  }
 
 }
 
