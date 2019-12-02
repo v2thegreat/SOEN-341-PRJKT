@@ -1,16 +1,17 @@
 const styles = theme => ({
   root: {
     backgroundColor: '#2C2F33',
-    color: 'white',
+    fontcolor: 'white',
     position: 'absolute',
     left: '0',
     top: '0',
     bottom: '5vh',
     width: '300px',
-    boxShadow: '0px 0px 2px black'
+    boxShadow: '0px 0px 2px white'
   },
   listItem: {
-    cursor: 'pointer'
+    cursor: 'pointer',
+    color: 'white'
   },
   newChannelButton: {
     height: '5vh',
@@ -25,7 +26,7 @@ const styles = theme => ({
     borderRadius: '0px'
   },
   unreadMessage: {
-    color: 'navyblue',
+    color: 'white',
     position: 'absolute',
     top: '2.5vh',
     right: '5px'

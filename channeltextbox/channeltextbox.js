@@ -19,7 +19,7 @@ class ChannelTextBoxComponent extends React.Component {
         <div className={classes.channelTextBoxContainer}>
           <TextField placeholder='Type your message...'
                      onKeyUp={(e) => this.userTyping(e)}
-                     id='channeltextbox'
+                     id="channelTextBox"
                      className={classes.channelTextBox}
                      onFocus={this.userClickedInput}></TextField>
           <Send onClick={this.submitMessage}
@@ -37,7 +37,7 @@ class ChannelTextBoxComponent extends React.Component {
   submitMessage = () => {
     if (this.messageValid(this.state.channelText)) {
       this.props.submitMessageFn(this.state.channelText);
-      document.getElementById('channeltextbox').value = '';
+      document.getElementById('channelTextBox').value = '';
     }
   };
 }

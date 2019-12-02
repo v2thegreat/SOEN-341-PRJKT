@@ -5,7 +5,7 @@ import {withStyles} from '@material-ui/core/styles';
 class ChannelViewComponent extends React.Component {
 
   componentDidUpdate = () => {
-    const container = document.getElementById('channelview-container');
+    const container = document.getElementById('channelViewContainer');
     if (container)
       container.scrollTo(0, container.scrollHeight);
   };
@@ -21,11 +21,10 @@ class ChannelViewComponent extends React.Component {
       return (
           <div>
             <div className={classes.channelHeader}>
-              Your channel {channel.channelname}
-              {/* GIVE CHANNEL NAME */}
+              Your channel {channel.channelName}
             </div>
 
-            <main id='channelview-container' className={classes.content}>
+            <main id='channelViewContainer' className={classes.content}>
               {
                 channel.messages.map((_msg, _index) => {
                   return (

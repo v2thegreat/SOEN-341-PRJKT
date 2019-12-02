@@ -43,7 +43,7 @@ class ChannelListComponent extends React.Component {
                                   alignItems='flex-start'>
 
                           <ListItemText
-                              primary={_channel.channelname}
+                              primary={_channel.channelName}
                               secondary={
                                 <React.Fragment>
                                   <Typography component='span'

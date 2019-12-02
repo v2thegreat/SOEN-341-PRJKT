@@ -18,7 +18,7 @@ class JoinChannelComponent extends React.Component {
   constructor() {
     super();
     this.state = {
-      channelname: null,
+      channelName: null,
     };
   }
 
@@ -28,19 +28,19 @@ class JoinChannelComponent extends React.Component {
         <main className={classes.main}>
           <CssBaseline></CssBaseline>
           <Paper className={classes.paper}>
-            <Typography component="h1" variant="h5">Join Channel</Typography>
+            <Typography component='h1' variant='h5'>Join Channel</Typography>
             <form className={classes.form} onSubmit={(e) => this.writeData(e)}>
               <FormControl fullWidth>
-                <InputLabel htmlFor="join-channel-channelname">
+                <InputLabel htmlFor='joinChannelChannelName'>
                   Enter the channel name
                 </InputLabel>
                 <Input required className={classes.input} autoFocus
-                       type="text" id='nameField'>
+                       type='text' id='nameField'>
                 </Input>
               </FormControl>
               <Button fullWidth className={classes.submit} variant='contained'
-                      color="primary"
-                      type="submit" onClick={this.writeData}>Submit</Button>
+                      color='primary'
+                      type='submit' onClick={this.writeData}>Submit</Button>
             </form>
           </Paper>
         </main>
@@ -49,9 +49,9 @@ class JoinChannelComponent extends React.Component {
   }
 
   writeData = () => {
-    const joinchannelname = document.getElementById('nameField').value;
+    const joinChannelName = document.getElementById('nameField').value;
     const email = firebase.auth().currentUser.email;
-    firebase.firestore().collection('channels').doc(joinchannelname).update({
+    firebase.firestore().collection('channels').doc(joinChannelName).update({
       users: firebase.firestore.FieldValue.arrayUnion(email),
     });
   };
